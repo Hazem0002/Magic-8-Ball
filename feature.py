@@ -1,15 +1,3 @@
-
-def get_user_guess():
-    while True:
-        try:
-            guess = int(input("Enter your guess (1-100): "))
-            if 1 <= guess <= 100:
-                return guess
-            else:
-                print("Please enter a number between 1 and 100.")
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-
 import random
 
 responses = [
@@ -26,14 +14,12 @@ responses = [
 def get_random_response():
     return random.choice(responses)
 
-
 def display_response(response):
     print("\n🔮 The Magic 8-Ball says:", response, "\n")
 
-
 def play_again():
     while True:
-        choice = input("Do you want to ask another question? (yes/no):").strip().lower()
+        choice = input("Do you want to ask another question? (yes/no): ").strip().lower()
         if choice == "yes":
             return True
         elif choice == "no":
@@ -42,13 +28,16 @@ def play_again():
         else:
             print("Please type 'yes' or 'no'.")
 
+def get_user_question():
+    question = input("Ask the Magic 8-Ball a yes/no question (or press Enter to quit): ").strip()
+    return question if question else None
 
 def magic_8_ball():
-
     print("🎱 Welcome to the Magic 8-Ball! 🎱")
     while True:
         question = get_user_question()
         if question is None:
+            print("Goodbye!")
             break
         response = get_random_response()
         display_response(response)
@@ -56,5 +45,4 @@ def magic_8_ball():
             break
 
 if __name__ == "__main__":
-
     magic_8_ball()
