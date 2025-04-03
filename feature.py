@@ -42,3 +42,19 @@ def play_again():
         else:
             print("Please type 'yes' or 'no'.")
 
+
+def magic_8_ball():
+
+    print("🎱 Welcome to the Magic 8-Ball! 🎱")
+    while True:
+        question = get_user_question()
+        if question is None:
+            break
+        response = get_random_response()
+        display_response(response)
+        if not play_again():
+            break
+
+if __name__ == "__main__":
+
+    magic_8_ball()
